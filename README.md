@@ -53,9 +53,12 @@ Bucket Schema [Proposed]:
                 / # to add pdf OCR model/schema
 ~~~   
 
-GS Opendata resources can be queried like this - if more convenient:
-https://opendata.grantseeker.io/data/<IRS_OBJECT_ID_FROM_INDEX>_public.xml
-https://opendata.grantseeker.io/data/202103219349100800_public.xml
+# Grantseeker Open API 
+Grantseeker Opendata resources can be queried like this - for user convenience:  
+
+https://opendata.grantseeker.io/data/<IRS_OBJECT_ID_FROM_INDEX>_public.xml  
+
+https://opendata.grantseeker.io/data/202103219349100800_public.xml  
 
 
 # Target Users & Product Value Proposition
@@ -78,10 +81,11 @@ Core Product
 [ ] README | Core documentation and community reference implementations for getting started with the datasets
 
 # Project Stewards
+
 Organization | Website | Representative | Role
 :---|---|---|---|
 Grantseeker, Inc.   |   https://grantseeker.io  | Nathaniel B. Chase @seekerchase   | Lead Sponsor
-Fluxx Labs, Inc.    |   https://fluxx.io        | [tbd contact]                     | Co-Sponsor  
+Fluxx Labs, Inc.    |   https://fluxx.io        | [tbd contact]                     | Advisory Council  
 
 ...others welcome!  Please reach out to the team:
 
@@ -123,7 +127,6 @@ https://www.irs.gov/newsroom/irs-makes-tax-exempt-organization-search-primary-so
 AWS OpenData team listed on their deprecation notice their openness to someone taking on stewardship. On June 14, 2023, @seekerchase and pws@amazon.com 
 spoke about Grantseeker, Inc. picking up the stewardship for the prior opendata project.
 
-
 # Source Data Files
 
 - Publication 78 Data (list of currently eligible organizations), updated ~monthly
@@ -157,42 +160,9 @@ Below is a summary of the leading ones (please PR more!):
 
 Organization | Project | Website | Notes
 :---|:---|:---|:---
-ProPublica | GuideStar/Search | https://www.guidestar.org/search | IRS data behind register wall + internal paywall; 990 data stale @ FY2019 on 2023-06
-Candid | GuideStar/Search | https://www.guidestar.org/search | IRS data behind register wall + internal paywall; 990 data stale @ FY2019 on 2023-06
+ProPublica | NonProfit Explorer | https://projects.propublica.org/nonprofits/ | Good open API; XML files require signed url(?); 12mo behind latest IRS publications 
+Candid | GuideStar/Search | https://www.guidestar.org/search | IRS data behind register + paywall; good enriched data; but no access to source 990; some stale
 Economic Research Institute | 990 Finder | https://www.erieri.com/form990finder | Basic site; 990 data stale @ FY2019 on 2023-06
-
-## Detailed Notes / Observations on Leading Sources:
-
-1. IRS themselves (online GUI):   
-    - https://apps.irs.gov/app/eos/
-    - Allows single search queries; can be a little finky on UX
-
-2. ProPublica: 
-    - Web GUI with clean, data-forward formatting
-    - Does hit user with fundraising popup on every visit (probably disuading donations)
-    - HAS a free API that is easy to use and well constructed: 
-    
-        https://projects.propublica.org/nonprofits/api
-
-    - API Limitations [ @TODO: REVIEW / UPDATE PER DETAILED REVIEW ]
-        - Some stale-ish data (e.g. annual update cadence around August - allowing for up to 12mo of missing data vs IRS filing)
-        - Does [NOT?] include contribution data
-        - Some areas of the XML data are not parsed or accessible on the GUI / API (e.g. contributions table)
-
-3. Candid (fmr GuideStar + Foundation Center)
-    - Clean and well documented web GUI and API
-    - REQUIRES registration (no free / open version)
-    - REQUIRES paid subscription to view FREE/OPEN DATA FIELDS:
-        - Finanicals
-        - Associated persons 
-    - Stale data (e.g. 990 Data @ FY2019 on 2023-06)
-    - Some odd data presentation -> e.g. their own 990 was PDF'd when it was machine readable XML on propublica (ie easier to copy/parse)
-    - Is a 501c3 organization themselves
-        - $50MM in Net Assets (2020)
-        - $3.4MM in annual Net Income (2020) on $42.8MM in Revenue ($29MM of that being service revenue; balance grants/other) 
-
-    - *Needs to work on openness / mission alignment*
-
 
 # Reference Projects
 
@@ -259,23 +229,6 @@ Tools & Applications:
     AuthorName: X4Impact
     AuthorURL: https://x4i.org
 
-# Ideas
-
-[] Source Data Integrity (SDI) - sha1sum checks
-
-...welcome ideas!
-
-
 =======
 PROPUBLICA DATA NOTES
 https://projects.propublica.org/nonprofits/api
-
-Get the Data
-
-For those interested in acquiring the original data from the source, here’s where our data comes from:
-
-    Raw filing data. Includes EINs and summary financials as structured data.
-    Exempt Organization profiles. Includes organization names, addresses, etc. You can merge this with the raw filing data using EIN numbers.
-    Form 990 documents. Prior to 2017, these documents were obtained and processed by Public.Resource.org and ProPublica. Bulk PDF downloads since 2017 are available from the IRS.
-    Form 990 documents as XML files. Includes complete filing data (financial details, names of officers, tax schedules, etc.) in machine-readable format. Only available for electronically filed documents. Electronic data released prior to October 2021 is also available through Amazon Web Services.
-    Audits. PDFs of single or program-specific audits for nonprofit organizations that spent $750,000 or more in Federal grant money in a single fiscal year. Available for fiscal year 2015 and later.
