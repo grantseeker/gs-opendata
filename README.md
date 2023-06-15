@@ -1,6 +1,12 @@
 # Grantseeker | Open Data Project for Global Charity Data
 An AWS OpenData Project maintained by Grantseeker, Inc. featuring developer-friendly IRS exempt organization data.
 
+This is a successor to the "first" AWS IRS 990 OpenData project:  
+https://registry.opendata.aws/irs990/  
+https://github.com/awslabs/open-data-registry/blob/main/datasets/irs990.yaml  
+https://github.com/awslabs/open-data-docs/tree/main/docs/irs-990  
+
+
 # Target Users & Product Value Proposition
 
 This project aims to provide the most complete, developer-friendly, and open source of IRS 990 data (and related publications).
@@ -142,12 +148,72 @@ Economic Research Institute | 990 Finder | https://www.erieri.com/form990finder 
 There have been a number of interesting and productive data munging projects over the years,
 probably more than can be listed here.  A few worth noting:
 
-- @jfenfen (Jacob Fenton) | https://github.com/jsfenfen/990-xml-database
+FROM AWS YAML (https://github.com/awslabs/open-data-registry/blob/main/datasets/irs990.yaml)  
 
+DataAtWork:
+
+Tutorials:
+- Title: Tutorial on using the IRS 990 e-file dataset
+    URL: https://appliednonprofitresearch.com/posts/2018/06/the-irs-990-e-file-dataset-getting-to-the-chocolatey-center-of-data-deliciousness/
+    AuthorName: Applied Nonprofit Research
+    AuthorURL: https://www.appliednonprofitresearch.com/
+
+Tools & Applications:
+- Title: Parse 990 XML using IRSx
+    URL: https://github.com/jsfenfen/990-xml-reader
+    AuthorName: Jacob Fenton
+    AuthorURL: http://jacobfenton.com/
+
+- Title: aws-irs-990-explorer
+    URL: http://irs-990-explorer.chrisgherbert.com
+    AuthorName: Chris Herbert
+    AuthorURL: http://chrisgherbert.com/
+
+- Title: 990_long
+    URL: https://github.com/CharityNavigator/990_long
+    AuthorName: Charity Navigator
+    AuthorURL: https://www.charitynavigator.org/
+
+- Title: Non Profit Light
+    URL: http://nonprofitlight.com
+    AuthorName: Non Profit Light
+
+- Title: Guide to Open Data for Nonprofit Research
+    URL: https://lecy.github.io/Open-Data-for-Nonprofit-Research/
+    AuthorName: lecy
+    AuthorURL: https://github.com/lecy
+
+- Title: Nonprofit Explorer
+    URL: https://projects.propublica.org/nonprofits/
+    AuthorName: ProPublica
+    AuthorURL: https://propublica.org
+
+- Title: Open990
+    URL: https://www.open990.com/
+    AuthorName: 990 Consulting, LLC
+    AuthorURL: https://www.990consulting.com/
+
+- Title: Grantmakers.io
+    URL: https://www.grantmakers.io
+    AuthorName: Chad Kruse
+    AuthorURL: https://www.chadkruse.com/
+
+- Title: "npo_classifier: Automated coding using machine-learning and remapping the U.S. nonprofit sector"
+    URL: https://github.com/ma-ji/npo_classifier
+    AuthorName: Ji Ma
+    AuthorURL: https://jima.me/
+
+- Title: Nonprofit Organization NTEE Code Finder & UN SDG Classification
+    URL: https://x4i.org/nonprofit-ntee-code-finder
+    AuthorName: X4Impact
+    AuthorURL: https://x4i.org
 
 # Ideas
 
 [] Source Data Integrity (SDI) - sha1sum checks
+
+...welcome ideas!
+
 
 =======
 PROPUBLICA DATA NOTES
