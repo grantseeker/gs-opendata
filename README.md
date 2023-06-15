@@ -6,6 +6,57 @@ https://registry.opendata.aws/irs990/
 https://github.com/awslabs/open-data-registry/blob/main/datasets/irs990.yaml  
 https://github.com/awslabs/open-data-docs/tree/main/docs/irs-990  
 
+# Getting Started
+
+Current Bucket
+> gs private bucket --> to migrate to 'pristine' AWS account once approved
+
+Bucket Schema [Proposed]:
+~~~sh
+    
+    README.md
+    LICENSE
+
+    # Folder for developers / users
+    /dev
+        /utils
+        /examples
+        /api # documentation of associated open API from Grantseeker & any collaborators
+    
+    # Core 990 data 
+    /990
+        /index
+            /latest.csv
+            /<pub_year>.csv
+        /xml
+            /<object_id>_public.xml
+        /pdf
+            /<object_id>_public.xml
+    
+    # Publication 78 Data
+    /pub78
+        /latest.csv
+        /<yyyy-mm-dd>.csv
+
+    # Extract files (from IRS)
+    /extracts
+        /bmf
+            /latest.csv
+            /<year_partition_x>.csv
+
+    # Reference schemas
+    /schemata
+        /990
+            /xml
+                /<version-number>.json
+            /pdf
+                / # to add pdf OCR model/schema
+~~~   
+
+GS Opendata resources can be queried like this - if more convenient:
+https://opendata.grantseeker.io/data/<IRS_OBJECT_ID_FROM_INDEX>_public.xml
+https://opendata.grantseeker.io/data/202103219349100800_public.xml
+
 
 # Target Users & Product Value Proposition
 
