@@ -1,64 +1,100 @@
 # Grantseeker | Open Data Project for Global Charity Data
 An AWS OpenData Project maintained by Grantseeker, Inc. featuring developer-friendly IRS exempt organization data.
 
-This is a successor to the "first" AWS IRS 990 OpenData project:  
+This is a successor to the "first" AWS IRS 990 OpenData project (maintained by the IRS themselves):  
 https://registry.opendata.aws/irs990/  
 https://github.com/awslabs/open-data-registry/blob/main/datasets/irs990.yaml  
 https://github.com/awslabs/open-data-docs/tree/main/docs/irs-990  
 
-# Getting Started
+We are committed to ensuring 990 data is open, elegantly machine-accessible, and free everyone who wants to build upon it.
 
-Current Bucket
+# Getting Started [NOTE: USING GRANTSEEKER URLS FOR NOW UNTIL WE GET OUR NEW AWS BUCKET]
+
+The easiest way to get started is to access our open bucket:
+
 > gs private bucket --> to migrate to 'pristine' AWS account once approved
+
+For example, you can get the 2022 source XML file for PRO PUBLICA INC. (EIN: 142007220) like this:
+
+~~~sh
+# ILLUSTRATION USING CURRENT GRANTSEEKER OPEN API
+
+# Open browswer
+https://opendata.grantseeker.io/data/202242699349300499_public.xml
+
+# Or in terminal
+curl https://opendata.grantseeker.io/data/202242699349300499_public.xml
+~~~
+
+The idea is that you can then build whatever data processing pipeline you want from there:
+~~~sh
+# Grab the "TotalAssetsBOYAmt" and log it in a file 'total_assets.txt'
+curl https://opendata.grantseeker.io/data/202242699349300499_public.xml | grep -oP '<TotalAssetsBOYAmt>\K[^<]+' > total_assets.txt
+~~~
+
+
+# Schema
+
+To help you navigate, here is the design of our full bucket:
 
 Bucket Schema [Proposed]:
 ~~~sh
     
     README.md
     LICENSE
+    
+    # All IRS source data in here
+    /irs
+
+        # Core 990 data 
+        /990
+            /index
+                /latest.csv
+                /<pub_year>.csv
+            /data
+                /xml
+                    /<object_id>_public.xml
+                /pdf
+                    /<object_id>_public.xml
+        
+            /schema
+                /xml
+                    /<version>
+
+        # Publication 78 Data
+        /pub78
+
+            # Index of file versions
+            /index
+                index.csv
+                index.json
+            
+            # Source files (txt format)
+            /data
+                latest.txt
+                <dated-version>.txt
+
+        # Business Master File Extract files (from IRS)
+        /extracts
+            /bmf
+                /latest.csv
+                /<year_partition_x>.csv
+
+    # Metadata
+    /metadata
+
+        # File with project metadata - e.g. date of last sync, errata, notes, etc
+        project.json
 
     # Folder for developers / users
     /dev
-        /utils
-        /examples
-        /api # documentation of associated open API from Grantseeker & any collaborators
-    
-    # Core 990 data 
-    /990
-        /index
-            /latest.csv
-            /<pub_year>.csv
-        /xml
-            /<object_id>_public.xml
-        /pdf
-            /<object_id>_public.xml
-    
-    # Publication 78 Data
-    /pub78
-        /latest.csv
-        /<yyyy-mm-dd>.csv
+        /utils      # Utilities for munging data; to ensure continuity
+        /examples   # Code Examples 
 
-    # Extract files (from IRS)
-    /extracts
-        /bmf
-            /latest.csv
-            /<year_partition_x>.csv
-
-    # Reference schemas
-    /schemata
-        /990
-            /xml
-                /<version-number>.json
-            /pdf
-                / # to add pdf OCR model/schema
 ~~~   
 
 # Grantseeker Open API 
-Grantseeker Opendata resources can be queried like this - for user convenience:  
-
-https://opendata.grantseeker.io/data/<IRS_OBJECT_ID_FROM_INDEX>_public.xml  
-
-https://opendata.grantseeker.io/data/202103219349100800_public.xml  
+For convenience, Grantseeker also provides a simple API to query resources and more [in Early Acccess].  Please inquire if interested:
 
 
 # Target Users & Product Value Proposition
@@ -95,15 +131,20 @@ Fluxx Labs, Inc.    |   https://fluxx.io        | [tbd contact]                 
 
 PHASE 0: Trial Period (6mo)
 
-Step 0 (June 2023)
+Step 0 (Q3 2023)
 Apply for and recieve AWS sponsorship to standup project.  Complete onboarding and transfer full XML file bucket from GS-S3 to new "pristine" project bucket.
 
-Step 1 (July 2023)
+Step 1 (Q3 2023)
 Soft launch / announcement to core members of community, past project users / contributors. Formation of basic project governance, including update cadence, 
 team roles / redundancy, and core deliverables.
 
-Step 2 (~by September 2023)
-Complete first cycle of data updates and product (data) maintenance cycle.  Solicit 2-5 new or legacy AWS 990 OpenData projects to onboard with project.
+Step 2 (Q4 2023)
+Complete first cycle of data updates and product (data) maintenance cycle.  Solicit 2-5 new or legacy AWS 990 OpenData projects to onboard to the project.
+
+Step N+1 
+...wherever the spirit takes us!
+
+> If you are interested in building on this dataset, please reach out! We are open to any and all collaborators.
 
 
 # Why?
